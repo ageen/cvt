@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIEW CATEGORY</title>
+<link href="{bm $TPATH /}css/menu.css" rel="stylesheet" type="text/css" />
+<link href="{bm $TPATH /}css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery-1.9.1.min.js"></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.dcmegamenu.1.2.js'></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#mega-menu-tut').dcMegaMenu({
+		rowItems:'3',
+		speed:'fast'
+	});
+	$(".tooltip").toolTip();
+});
+//<![CDATA[
+(function($){
+$.fn.toolTip = function(){
+	return this.each(function(){
+    var obj = $(this);
+    var txt = obj[0].title;
+    var left = obj.offset().left + 10;
+    var top = obj.offset().top;
+    var showTip = function(){
+     $(document.body).append("<div id='showTip'><div id='tips' class='tip-ct'></div></div>");
+     obj[0].title = '';
+     $("#tips").html(txt);
+     var tipTop = top-$("#showTip").outerHeight();
+     $("#showTip").css({'position':'absolute',left:left,top:tipTop}).show();
+    };
+    var hideTip = function(){
+     $("#showTip").remove();
+    };
+    $(this).hover(function(){showTip();},function(){hideTip();}).focus(function(){showTip();}).blur(function(){hideTip();});
+   });
+}
+})(jQuery)
+//]]>
+function del() {
+	if(window.confirm('你确定要删除该记录！')){
+		//alert("确定");
+		return true;
+	}else{
+		//alert("取消");
+		return false;
+	}
+}//del end
+</script>
+</head>
+<body>
+{bm include file="menu.html" /}
+<div class="list_view">
+{bm if $cate_arr eq "nothing" /}
+<div class="no_item">暂无类目信息 | <a href="insert.php?mode=category">新增类目</a></div>
+{bm else /}
+{bm php /}$i=1;{bm /php /}
+<table>
+<tr><th width="40">序号</th><th width="150">类目名称</th><th>类目描述</th><th width="65">是否显示</th><th width="80">相关操作</th></tr>
+{bm foreach value=list from=$cate_arr  /}
+<tr><td>{bm php /}echo $i;{bm /php /}</td><td style="font-size:12px;"><a href="view.php?mode=photo&cate={bm $list.id; /}">{bm $list.title /}</a><span style="color:#666666">(共{bm $list.p_count; /}张)</span></td><td class="show_describe">{bm if $list.description eq "" /}<span style="color:#FF0000">无类目描述</span>{bm else /}<a class="tooltip" title="{bm $list.description /}">{bm $list.description|truncate:75:"..." /}</a>{bm /if /}</td><td>{bm if $list.display eq 1 /}是{bm else /}否{bm /if /}</td><td class="control_operator"><a href="modify.php?mode=category&id={bm $list.id; /}">编辑</a>&nbsp;&nbsp;<a href="delete.php?mode=category&id={bm $list.id; /}" onclick="javascript:return del();">删除</a></td></tr>
+{bm php /}$i++;{bm /php /}
+{bm /foreach /}
+</table>
+{bm /if /}
+</div>
+</body>
+</html>

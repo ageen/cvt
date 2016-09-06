@@ -1,0 +1,163 @@
+<!doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+<meta http-equiv="Page-Exit" content="revealTrans(Duration=10,Transition=0)">
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<title>个人简历（Curriculum Vitae）</title>
+<link rel="stylesheet" type="text/css" href="{bm $TPATH /}css/cv_style.css" />
+<!--[if IE]><script src="{bm $TPATH /}scripts/html5.js"></script><![endif]-->
+<script type="text/javascript"  src="{bm $TPATH /}scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"	src="{bm $TPATH /}scripts/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("img.lazy").lazyload({
+    	effect : "fadeIn",
+		threshold : 100
+	});
+});
+</script>
+</head>
+<body>
+<div class="menu">
+	<div id="nav">
+    	<div style="line-height:30px;font-weight:bold; text-align:center;font-size:14px;"><a href="index.php" style="text-decoration:none;color:#333;">返回首页</a></div>
+		<ul class="navigation">
+        	<li data-slide="1" style="background:#626262;">顶部</li>
+			<li data-slide="2" style="background:#1e4e98;">个人信息</li>
+			<li data-slide="3" style="background:#2c7d04;">教育背景</li>
+			<li data-slide="4" style="background:#cb5903;">工作经历</li>
+			<li data-slide="5" style="background:#910909;">作品案例</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
+<div class="slide_header">
+<h1>个人简历</h1>
+<h2>Curriculum Vitae</h2>
+<div class="info_title"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/info_title.png" id="personal_info" /></div>
+<div class="education_title"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/education_title.png" id="education_info" /></div>
+<div class="experience_title"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/experience_title.png" id="experience_info" /></div>
+<div class="example_title"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/example_title.png" id="example_info" /></div>
+</div>
+</div>
+<!--personal info-->
+<div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
+<div class="slide_frame">
+<div class="slide_title"><div class="slide_title_bk"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/blue.png" /></div><div class="slide_title_text">个人信息<p>Personal Information</p></div></div>
+<div style="clear:both;"></div>
+<div id="container">
+<div class="list_bar"><label>姓名<span>(NAME)</span></label><p id="name">{bm if $info.name eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.name /}{bm /if /}</p></div>
+<div class="list_bar"><label>年龄<span>(AGE)</span></label><p id="age">{bm if $info.age eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.age /}{bm /if /}</p></div>
+<div class="list_bar"><label>性别<span>(GENDER)</span></label><p id="gender">{bm if $info.gender eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.gender /}{bm /if /}</p></div>
+<div class="list_bar"><label>职业<span>(PROFESSION)</span></label><p id="profession">{bm if $info.profession eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.profession /}{bm /if /}</p></div>
+<div class="list_bar"><label>籍贯<span>(NATIVE PLACE)</span></label><p id="native">{bm if $info.native eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.native /}{bm /if /}</p></div>
+<div class="list_bar"><label>现居住地<span>(RESIDENCE)</span></label><p id="residence">{bm if $info.residence eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.residence /}{bm /if /}</p></div>
+<div class="list_bar"><label>兴趣爱好<span>(INTEREST)</span></label><p id="interest">{bm if $info.interest eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.interest /}{bm /if /}</p></div>
+<div class="list_bar"><label>喜爱运动<span>(INTEREST)</span></label><p id="sports">{bm if $info.sports eq "" /}<span style="color:#F00">暂无信息</span>{bm else /}{bm $info.sports /}{bm /if /}</p></div>
+<div class="list_bar_img" id="list_bar_img"><img id="add_person_image" class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm if $info.portrait eq "" /}{bm $TPATH /}images/no_portrait.png"{bm else /}{bm $info.portrait /}"{bm /if /} /></div>
+</div>
+</div>
+</div>
+<!--education info-->
+<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
+<div class="slide_frame">
+<div class="slide_title"><div class="slide_title_bk"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/green.png" /></div><div class="slide_title_text">教育背景<p>Education Background</p></div></div>
+<div id="container3" class="container_d">
+<table>
+<tr><th width=200>起止时间</th><th width=220>学校名称</th><th width=200>所学专业</th><th></th></tr>
+<tr><td colspan="3"><hr /></td></tr>
+{bm if $edu == "nothing" /}
+<tr><td colspan="4"><span style="color:#F00;">暂无信息</span></td></tr>
+<tr><td colspan="4"><hr /></td></tr>
+{bm else /}
+{bm foreach value=item from=$edu /}
+<tr>
+<td>{bm $item.s_date /} 至 {bm if $item.e_date eq "" /}现在{bm else /}{bm $item.e_date /}{bm /if /}</td><td>{bm $item.school_name /}</td><td>{bm $item.specialty_name /}</td>
+</tr>
+<tr>
+<td colspan="4" style="text-align:left;text-indent:1em;">
+<span style="color:#000;font-weight:bold;">备注：</span>{bm if $item.append_note eq "" /}<span style="color:#F00;">暂无备注</span>{bm else /}{bm $item.append_note; /}{bm /if /}
+</td>
+</tr>
+<tr><td colspan="3"><hr /></td></tr>
+{bm /foreach /}
+{bm /if /}
+</table>
+</div>
+</div>
+</div>
+<!--job info-->
+<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+<div class="slide_frame">
+<div class="slide_title"><div class="slide_title_bk"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/yellow.png" /></div><div class="slide_title_text">工作经历<p>Work Experience</p></div></div>
+<div id="container4" class="container_d">
+<table>
+<tr><th width=190>起止时间</th><th width=200>公司名称</th><th width=120>所属部门</th><th width=180>职位</th><th></th></tr>
+<tr><td colspan="4"><hr /></td></tr>
+{bm if $job == "nothing" /}
+<tr><td colspan="4"><span style="color:#F00;">暂无信息</span></td></tr>
+<tr><td colspan="4"><hr /></td></tr>
+{bm else /}
+{bm foreach value=item from=$job /}
+<tr><td>{bm $item.s_date /} 至 {bm if $item.e_date eq "" /}现在{bm else /}{bm $item.e_date /}{bm /if /}</td><td>{bm $item.company_name /}</td><td>{bm $item.department /}</td><td>{bm $item.occupation /}</td>
+</tr>
+<tr><td colspan="4" style="text-align:left;text-indent:1em;">
+<span style="color:#000;font-weight:bold;">备注：</span>{bm if $item.append_note eq "" /}<span style="color:#F00;">暂无备注</span>{bm else /}{bm $item.append_note; /}{bm /if /}
+</td></tr>
+<tr><td colspan="4"><hr /></td></tr>
+{bm /foreach /}
+{bm /if /}
+</table>
+</div>
+</div>
+</div>
+<!--work exmaple-->
+<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="0.5">
+<div class="slide_frame">
+<div class="slide_title"><div class="slide_title_bk"><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/red.png" /></div><div class="slide_title_text" style="color:#910909;">作品案例<p>Work Example</p></div></div>
+<div id="container5">
+<h4><a href="page.php?cid=9">漫画卡通</a></h4>
+<ul>
+{bm if $l_cartoon eq "nothing" /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/page_thumb.png" /></li>
+{bm else /}
+{bm foreach value=list from=$l_cartoon /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="uploads/photos/thumbs/{bm $list.filename /}" /></li>
+{bm /foreach /}
+{bm /if /}
+</ul>
+<div style="clear:both"></div>
+<h4><a href="page.php?cid=10">艺术设计</a></h4>
+<ul>
+{bm if $l_art eq "nothing" /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/page_thumb.png" /></li>
+{bm else /}
+{bm foreach value=list from=$l_art /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="uploads/photos/thumbs/{bm $list.filename /}" /></li>
+{bm /foreach /}
+{bm /if /}
+</ul>
+<div style="clear:both"></div>
+<h4><a href="page.php?cid=11">摄影作品</a></h4>
+<ul>
+{bm if $l_pho eq "nothing" /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="{bm $TPATH /}images/page_thumb.png" /></li>
+{bm else /}
+{bm foreach value=list from=$l_pho /}
+<li><img class="lazy" src="{bm $TPATH /}images/lightblue.gif" data-original="uploads/photos/thumbs/{bm $list.filename /}" /></li>
+{bm /foreach /}
+{bm /if /}
+</ul>
+<div style="clear:both"></div>
+</div>
+</div>
+</div>
+<div class="_footer">Design by liuxin, SmallCell Studio @2013, E-mail:star@liuxin.name</div>
+</body>
+</html>
+<script type="text/javascript" src="{bm $TPATH /}scripts/cv_scripts/jquery.stellar.min.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/cv_scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/cv_scripts/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/cv_scripts/stellar_init.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/cv_scripts/init_view.js"></script>

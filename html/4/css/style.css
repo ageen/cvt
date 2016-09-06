@@ -1,0 +1,11 @@
+body{margin:0;padding:0;}
+img{margin:0;padding:0;}
+.ly_center{height:100%; width:100%;}
+.ly_center_body{margin:0 auto; padding:0;width:950px; height:100%;}
+.ly_center_body_list{margin:0; padding:20px;overflow:hidden; display:block; clear:both;border-bottom:1px solid #efefef;}
+.ly_center_body_list img{display:block; margin:0 auto 0 auto;}
+
+.navi{ position:fixed; bottom:20px;right:0;}
+.navi ul{margin:0;padding:0;list-style:none;}
+.navi ul li{margin:0 0 5px 0;padding:0;line-height:30px; background:#0b4e8d;font-size:14px;font-weight:bold;width:150px; text-align:center;}
+.navi ul li a{color:#FFF;text-decoration:none;}

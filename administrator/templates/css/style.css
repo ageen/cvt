@@ -1,0 +1,91 @@
+@charset "utf-8";
+body,ul,li,p,label,dl,dt,dd,h4{margin:0;padding:0;}
+a{text-decoration:none;}
+
+/*LOGIN FORM*/
+.login_head{margin:120px auto 0 auto;padding:0;width:390px;}
+.login_head h4{line-height:40px; height:40px; color:#00f;}
+.login_form{margin:0 auto 0 auto;border:1px solid #F09;padding:20px 20px 0 20px;width:350px;}
+.login_bar{height:50px;}
+.login_bar label{color:#960;font-weight:bold;font-size:14px;}
+.login_bar input{margin:0;padding:0;}
+.login_bar button{background:#FFF;font-weight:bold;}
+#show_tip{font-size:14px;color:#F00;}
+
+/*INSERT FORM*/
+.insert_form{width:600px;height:100%;margin:20px auto 0 auto;padding:0;}
+.list_bar{margin:0;padding:10px 0 10px 0;font-size:14px;width:400px;}
+.list_bar span{margin:0 10px 0 5px;color:#666666;}
+.list_bar button{background:#FFF;font-weight:bold;color:#333;}
+
+/**LIST VIEW**/
+.list_view{width:900px;margin:20px auto 20px auto;}
+.list_view table{width:800px;margin:20px auto 0 auto;padding:0;}
+.list_view table th{font-size:12px;}
+.list_view table td{height:30px;font-size:14px;text-align:center;border:1px solid #CCCCCC;}
+.show_describe{color:#F00;font-size:12px;}
+.show_describe a{color:#009;}
+.control_operator a{color:#0000FF;font-size:12px;font-weight:bold;}
+.tooltip{cursor:pointer;}
+#tips{margin:0;padding:5px;background:#FFFFCC;border:1px solid #efefef;font-size:12px;line-height:20px;width:200px;}
+
+.list_view_i{width:800px;margin:20px auto 20px auto;}
+.list_view_i dl{overflow:hidden;}
+.list_view_i dl dt{float:left; padding-left:20px;}
+.list_view_i dl dt img{width:250px;height:250px; cursor:pointer;}
+.list_view_i dl dd{float:left;padding-left:20px;}
+.list_view_bar{margin:0;padding:5px 0 5px 0;}
+.list_view_bar label{font-weight:bold;font-size:12px;}
+.list_view_bar span{font-size:14px;}
+
+.list_view_ii{width:800px;margin:5px auto 5px auto;padding:0;}
+.list_view_ii dl{overflow:hidden;width:600px;margin:0 auto 0 auto;}
+.list_view_ii dl dt{text-align:center;margin:5px 0 5px 0;}
+.list_view_ii dl dt img{width:294px;height:102px; cursor:pointer;}
+.list_view_ii dl dd{float:left;padding-left:20px;}
+
+.button_blue{color:#00F;background:#FFF;font-size:12px;}
+.button_red{color:#F00;background:#FFF;font-size:12px;}
+
+/**CHANGE PHOTO**/
+.change_photo{display:none;}
+.change_photo h4{color:#FFF;}
+.change_photo form{background:#FFFFFF;}
+.list_bar3{margin:0;padding:10px;}
+.list_bar3 label{float:left;font-size:12px;font-weight:bold; line-height:20px; color:#666666;}
+.list_bar3 input{}
+.list_bar3 button{font-size:12px;font-weight:bold;}
+
+/**CHANGE BANNER**/
+.change_banner{display:none;}
+.change_banner h4{color:#FFF;}
+.change_banner form{background:#FFFFFF;}
+
+/**NO ITEM**/
+.no_item{font-size:14px; text-align:center; line-height:50px;color:#F00; background:#FFFFCC;}
+.no_item a{color:#00F};
+
+/**ERROR**/
+.error{color:#F00;margin:0 0 0 5px;background:#999;}
+
+/**paginate_style**/
+.paginate_style{margin:0;padding:0;}
+.span3{font-size:12px;display:block;float:left; line-height:20px;margin-right:10px;}
+.paginate_style ul{list-style:none;float:left;}
+.paginate_style ul li{float:left; width:20px;height:20px;text-align:center; line-height:20px;font-size:12px;font-weight:bold;}
+.paginate_style .active{background:#efefef;}
+.paginate_style .active a{color:#0000FF;}
+
+/**WEB GLOBAL CONFIGURATION**/
+.config_style{width:600px;margin:15px auto 0 auto;padding:10px;border:1px solid #efefef;}
+.list_bar_iv{ height:30px;font-size:14px;}
+.list_bar_iv button{font-size:12px; background:#FFF;color:#0000FF;}
+.list_bar_iv label{font-weight:bold;color:#666666;}
+
+#change_password{margin:0;padding:0;background:#FFFFFF; display:none; width:300px;font-size:14px;}
+#change_password h4{margin:0;padding:0; line-height:30px; text-indent:1em;}
+
+/**Account View**/
+#change_account_info{width:300px; display:none; background:#FFF;}
+#change_account_info h4{font-size:14px; line-height:30px; text-indent:1em;}
+#change_account_info button{color:#00F;}

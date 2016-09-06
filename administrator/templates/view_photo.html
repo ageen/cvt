@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIEW PHOTO</title>
+<link href="{bm $TPATH /}css/menu.css" rel="stylesheet" type="text/css" />
+<link href="{bm $TPATH /}css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery-1.9.1.min.js"></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.dcmegamenu.1.2.js'></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#mega-menu-tut').dcMegaMenu({
+		rowItems:'3',
+		speed:'fast'
+	});
+});
+</script>
+</head>
+<body>
+{bm include file="menu.html" /}
+<div class="list_view_i" id="list_view">
+{bm if $l_photo eq "nothing" /}
+<div class="no_item">暂无图片信息 | <a href="insert.php?mode=photo">新增图片</a></div>
+{bm else /}
+{bm foreach value=list from=$l_photo /}
+<dl>
+<dt id="photo_{bm $list.id /}" onclick="popup({bm $list.id /})"><img src="../uploads/photos/thumbs/{bm $list.filename /}" /></dt>
+<dd id="item_list{bm $list.id /}">
+<form method="post" onsubmit="return false;" id="update_photo_{bm $list.id /}">
+<div class="list_view_bar"><label>图片名称</label>&nbsp;&nbsp;<span><input name="title" type="text" value="{bm $list.title /}" /></span></div>
+<div class="list_view_bar"><label>类目名称</label>&nbsp;
+<span><select name="category_id">
+{bm foreach value=list2 from=$l_cate /}
+{bm if $list2.id eq $list.category_id /}
+<option value="{bm $list2.id /}" selected="selected">{bm $list2.title /}</option>
+{bm else /}
+<option value="{bm $list2.id /}">{bm $list2.title /}</option>
+{bm /if /}
+{bm /foreach /}
+</select></span></div>
+<div class="list_view_bar"><label>是否在简历显示</label>&nbsp;&nbsp;<span>否<input type="radio" name="show_in_cv" value="0" {bm if $list.show_in_cv eq 0 /}checked="checked"{bm /if /} />&nbsp;是<input type="radio" name="show_in_cv" value="1" {bm if $list.show_in_cv eq 1 /}checked="checked"{bm /if /} /></span></div>
+<div class="list_view_bar"><label>图片描述</label>&nbsp;&nbsp;<textarea name="description" rows="6">{bm $list.description; /}</textarea></div>
+<div class="list_view_bar"><button class="button_blue" onclick="ajax_update({bm $list.id; /})">更新</button>&nbsp;&nbsp;<button class="button_red" onclick="del({bm $list.id; /})">删除</button></div>
+</form>
+</dd>
+</dl>
+<div style="clear:both"></div>
+<hr />
+{bm /foreach /}
+{bm /if /}
+<div class="paginate_style">
+{bm $page_string; /}
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="change_photo" class="change_photo">
+<h4>更新图片</h4>
+<form id="change_photo_form" name="change_photo_form" method="post" onsubmit="return false;" enctype="multipart/form-data">
+<div class="list_bar3"><label>选择图片文件:</label><input type="file" name="photo_file" /></div>
+<div class="list_bar3" style="text-align:center;"><button onclick="ajax_update_photo();">更新</button></div>
+</form>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery.ajax.upload.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery.bpopup.min.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery.stellar.min.js"></script>
+<script type="text/javascript" src="{bm $TPATH /}scripts/waypoints.min.js"></script>
+<script type="text/javascript">
+function del(id) {
+	if(window.confirm('你确定要删除该记录！')){
+		ajax_delete(id)
+	}else{
+		//alert("取消");
+		return false;
+	}
+}//del end
+function ajax_delete(id){
+	$.ajax({
+	  	type: "GET",
+	  	url: "ajax/delete_photo.php?id="+id,
+		success: function(msg){
+			if(msg == "fail"){
+				alert("删除失败！")
+			} else {
+				alert("删除成功！")
+	   			$("#list_view").html(msg)	
+			}
+		}
+	});
+}
+function ajax_update(id){
+	$.ajax({
+	  	type: "POST",
+	  	url: "ajax/update_photo.php?id=" + id,
+		data: $("#update_photo_"+id).serialize(),
+		success: function(msg){
+			if(msg == "fail"){
+				alert("更新失败！")
+			} else {
+				alert("更新成功！")
+				$("#item_list"+id).html(msg)
+			}
+		}
+	});
+}
+var photo_id
+function popup(id){
+	//$('#photo_'+id).bind('click', function(e) {
+		// Prevents the default action to be triggered. 
+		//e.preventDefault();
+		
+		// Triggering bPopup when click event is fired
+		$('#change_photo').bPopup({
+			speed: 650,
+			transition: 'slideIn',
+			modalClose: true
+		});
+		photo_id = id
+	//});
+}
+function ajax_update_photo(id){
+	id = photo_id
+	var options = {
+		url:'ajax/change_photo.php?id='+id,
+		complete: function(response)
+		{
+			//alert(response.responseText)
+			if(response.responseText != "fail"){
+				$("#photo_"+id).html(response.responseText)
+				alert("图片更新成功！");
+			} else {
+				alert("图片更新失败！");
+				//$("#education_form_popup").fadeOut("slow");
+			}
+		},
+		error: function()
+		{
+			alert("图片更新失败！")
+		}
+	};
+	$("#change_photo_form").ajaxSubmit(options);
+}
+</script>

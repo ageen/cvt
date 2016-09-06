@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INSERT CATEGORY</title>
+<link href="{bm $TPATH /}css/menu.css" rel="stylesheet" type="text/css" />
+<link href="{bm $TPATH /}css/style.css" rel="stylesheet" type="text/css" />
+<style>
+.wrap {width: 960px; margin:0 auto;}
+</style>
+<script type="text/javascript" src="{bm $TPATH /}scripts/jquery-1.9.1.min.js"></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.dcmegamenu.1.2.js'></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#mega-menu-tut').dcMegaMenu({
+		rowItems:'3',
+		speed:'fast'
+	});
+});
+</script>
+</head>
+<body>
+{bm include file="menu.html" /}
+<div class="insert_form">
+<h4>新增类目</h4>
+<form action="save.php" method="post" name="category_form" id="category_form">
+<div class="list_bar"><span>类目名称</span><input type="text" name="title" /></div>
+<div class="list_bar"><span>类目描述</span><textarea name="description" cols="16" rows="6"></textarea></div>
+<div class="list_bar"><span>是否显示</span>是<input type="radio" name="display" value="1" checked="checked" />&nbsp;否<input type="radio" name="display" value="0" /></div>
+<div class="list_bar"><button type="submit">新增</button></div>
+<input type="hidden" name="mode" value="category" />
+</form>
+</div>
+</body>
+</html>
+<script type='text/javascript' src='{bm $TPATH /}scripts/jquery.validate.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+$("#category_form").validate({
+	rules:{
+		title:"required"
+	},
+	messages:{
+		title:"类目名称不能为空"
+	}
+});
+</script>

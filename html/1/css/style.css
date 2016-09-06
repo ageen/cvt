@@ -1,0 +1,7 @@
+body{margin:0;padding:0;}
+img{margin:0;padding:0;}
+.ly_top{background:url(../images/top.jpg) center; height:918px; width:100%;}
+.ly_center{background:url(../images/bk.jpg) center top; height:2082px; width:100%;}
+.ly_center_body{margin:0 auto; padding:0;width:950px; height:100%;}
+.ly_center_body_list{margin:0; padding:0;overflow:hidden; display:block; clear:both;}
+.ly_center_body_list img{display:block;}

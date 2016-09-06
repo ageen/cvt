@@ -1,0 +1,6 @@
+body{margin:0;padding:0;}
+img{margin:0;padding:0;}
+.ly_center{background:#fee1b6; height:100%; width:100%;}
+.ly_center_body{margin:0 auto; padding:0;width:950px; height:100%;}
+.ly_center_body_list{margin:0; padding:0;overflow:hidden; display:block; clear:both;}
+.ly_center_body_list img{display:block;}
